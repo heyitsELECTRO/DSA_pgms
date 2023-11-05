@@ -41,7 +41,7 @@ void display(struct stack s)
     }
     for(i=s.top ; i>=0 ; i--)
     {
-        printf("%d\n",s.str[i]);
+        printf("|__%d__|\n",s.str[i]);
     }
 }
 
