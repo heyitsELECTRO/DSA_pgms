@@ -45,7 +45,7 @@ main()
     {
         if( isdigit(prefix[i]))
         {
-            num = prefix[i] - 48 ;
+            num = prefix[i] - '0' ;
             push(num);
         }
         else 
