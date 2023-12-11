@@ -7,7 +7,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-#include<math.h>
+
 
 struct Node {
     int data ;
@@ -81,7 +81,7 @@ node insert_before_elmt( node head , node new)
     scanf("%d",&key);
     if(head -> data == key)
     {
-        head = insert_front(head , new); // Using insert at front function
+        head = insert_front(head , new); 
         return head;
     }
     node temp = head , prev;
@@ -106,11 +106,12 @@ node insert_before_elmt( node head , node new)
 node insert_after_elmt( node head , node new)
 {
     int key;
-    printf("Enter before which elmt you need to insert new node :\n");
+    printf("Enter after which elmt you need to insert new node :\n");
     scanf("%d",&key);
     if ( head -> data == key)
     {
-        printf("Cannot insert before first node , try insert before elmt\n");
+        new -> link = head -> link;
+        head -> link = new;
         return head;
     }
     node temp = head , next;
@@ -269,36 +270,27 @@ main()
         printf("4 to insert after an elmt / 5 to insert at a postiton / 6 to delete at front /\n");
         printf("7 to delete at end / 8 to delete at a position / 9 to display:\n");
         scanf("%d",&ch);
+        if(ch == 1 || ch == 2 || ch == 3 || ch == 4 || ch == 5 )
+        {
+            printf("Enter the elmt that needs to be inserted:\n");
+            scanf("%d",&item);
+            new = createnode(item);
+        }
         switch(ch)
         {
-            case 1 : printf("Enter the elmt that needs to be inserted:\n");
-                     scanf("%d",&item);
-                     new = createnode(item);
-                     head = insert_front(head, new);
+            case 1 : head = insert_front(head, new);
                      break;
 
-            case 2 : printf("Enter the elmt that needs to be inserted:\n");
-                     scanf("%d",&item);
-                     new = createnode(item);
-                     head = insert_end(head, new);
+            case 2 : head = insert_end(head, new);
                      break;
 
-            case 3 : printf("Enter the elmt that needs to be inserted:\n");
-                     scanf("%d",&item);
-                     new = createnode(item);
-                     head = insert_before_elmt( head , new);
+            case 3 : head = insert_before_elmt( head , new);
                      break;
 
-            case 4 : printf("Enter the elmt that needs to be inserted:\n");
-                     scanf("%d",&item);
-                     new = createnode(item);
-                     head = insert_after_elmt( head , new);
+            case 4 : head = insert_after_elmt( head , new);
                      break;
             
-            case 5 : printf("Enter the elmt that needs to be inserted:\n");
-                     scanf("%d",&item);
-                     new = createnode(item);
-                     head = insert_at_position( head , new);
+            case 5 : head = insert_at_position( head , new);
                      break;
 
             case 6 : head = delete_front(head);
